@@ -1,17 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>SWAN S2S Wave Forecast</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWAN Wave Forecast</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 15px;
+      background: #f4f7fa;
+    }
+
+    .viewer {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>SWAN S2S Wave Forecast</h1>
+<div class="viewer">
 
-<p>Testing GitHub Pages</p>
+  <h2>SWAN S2S Wave Forecast</h2>
 
-<p>16-Day Ocean Wave Prediction</p>
+  <label for="forecast">Forecast Day</label>
+
+  <select id="forecast">
+    <option value="01">Day 01</option>
+    <option value="02">Day 02</option>
+    <option value="03">Day 03</option>
+    <option value="04">Day 04</option>
+  </select>
+
+  <img
+    id="waveImage"
+    src="webp/hs_day01.webp"
+    alt="SWAN Wave Forecast"
+  >
+
+</div>
+
+<script>
+
+const forecast =
+  document.getElementById("forecast");
+
+const image =
+  document.getElementById("waveImage");
+
+forecast.addEventListener("change", function() {
+
+  const day = this.value;
+
+  image.src =
+    "webp/hs_day" + day + ".webp?t=" + Date.now();
+
+});
+
+</script>
 
 </body>
 </html>
